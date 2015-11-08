@@ -10,6 +10,8 @@ func main() {
 	postOrder(root)
 	fmt.Println("\npreOrder:")
 	preOrder(root)
+	fmt.Println("\nBFS:")
+	BFS(root)
 }
 
 func buildTree() *Node {
@@ -53,11 +55,21 @@ func inOrder(n *Node) {
 }
 
 type Node struct {
-	L     *Node
-	R     *Node
-	value string
+	L       *Node
+	R       *Node
+	value   string
+	visited bool
 }
 
 func (n *Node) String() string {
 	return fmt.Sprintf("%s", n.value)
+}
+
+func (n *Node) IsVisited() bool {
+	return n.visited
+}
+
+func (n *Node) Visit() {
+	fmt.Printf("%s ", n)
+	n.visited = true
 }
